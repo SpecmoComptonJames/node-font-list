@@ -5,14 +5,16 @@
  */
 
 'use strict'
-
-const methods = [
-  require('./getByPowerShell'),
-  require('./getByVBS')
-]
-
-module.exports = async () => {
-  let fonts = []
+module.exports = async (options) => {
+  let methods = [];
+  let fonts = [];
+  if (!options) { options = {}; }
+  if (options.usePowerShell) {
+    methods.push(require('./getByPowerShell'));
+  } else {
+    methods.push(require('./getByRegistry'));
+  }
+  methods.push(require('./getByVBS'))
 
   for (let method of methods) {
     try {

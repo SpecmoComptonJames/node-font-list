@@ -3,6 +3,31 @@
 `font-list` is a Node.js package for listing the fonts available on your system.
 
 Current version supports **MacOS**, **Windows**, and **Linux**.
+### Powershell has been found to not return on all windows platforms
+### Moved call to registry.  Leave powershell option as needed
+```
+//using registry
+require('./index').getFonts({disableQuoting: true})
+  .then(fonts => {
+    console.log(fonts)
+    console.log(fonts.join('\n'))
+  })
+  .catch(err => {
+    console.log(err)
+  })
+```
+
+```
+console.log('*** using power shell...')
+require('./index').getFonts({disableQuoting: true, usePowerShell: true})
+    .then(fonts => {
+        console.log(fonts)
+        console.log(fonts.join('\n'))
+    })
+    .catch(err => {
+        console.log(err)
+    })
+```
 
 ## Install
 

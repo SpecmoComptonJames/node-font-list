@@ -24,7 +24,7 @@ exports.getFonts = async (options) => {
     fonts = await for_darwin()
 
   } else if (platform === 'win32') {
-    fonts = await for_win32()
+    fonts = await for_win32(options)
 
   } else if (platform === 'linux') {
     fonts = await for_linux()
